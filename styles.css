@@ -99,3 +99,7 @@ a:hover{
     background-color: var(--light-blue);
     color: var(--white);
     }
+
+.home-container{
+    position: relative;
+}
