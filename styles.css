@@ -4,6 +4,7 @@
     --light-blue: rgb(19, 127, 185);
     --dark-blue: rgb(13, 44, 84);
     --light-grey: rgba(150, 150, 150, 0.1);
+    --transparent: rgba(0, 0, 0, 0);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&family=Yeseva+One&display=swap');
@@ -12,6 +13,10 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 100%;
     background-color: var(--white);
+}
+
+header  {
+   position: fixed;
 }
 
 h1 {
@@ -95,11 +100,28 @@ a:hover{
     padding: 1px;
     border-radius: 5px;
     }
+
 #topbutton:hover{
     background-color: var(--light-blue);
     color: var(--white);
-    }
+}
 
-.home-container{
-    position: relative;
+.home-text-block{
+    text-align: center;
+    position: absolute;
+    bottom: 70%;
+    background-color: var(--transparent);
+    color: white;
+    padding-left: 33%;
+    padding-right: 33%;
+}
+
+.play-text-block{
+    text-align: center;
+    position: absolute;
+    bottom: 70%;
+    background-color: var(--transparent);
+    color: white;
+    padding-left: 33%;
+    padding-right: 33%;
 }
