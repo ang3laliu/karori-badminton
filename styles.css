@@ -2,9 +2,10 @@
     --white: rgb(255, 255, 255);
     --cream: rgb(253, 246, 236);
     --grey: rgb(150, 150, 150);
-    --light-blue: rgb(19, 127, 185);
+    --light-blue: rgba(19, 127, 185, 0.1);
+    --blue: rgb(19, 127, 185);
     --dark-blue: rgb(13, 44, 84);
-    --light-grey: rgba(150, 150, 150, 0.1);ouri
+    --light-grey: rgba(150, 150, 150, 0.1);
     --transparent: rgba(0, 0, 0, 0);
 }
 
@@ -56,7 +57,7 @@ nav img {
     content: '';
     width: 0%;
     height: 2px;
-    background: var(--light-blue);
+    background: var(--blue);
     display: block;
     margin: auto;
     transition: 0.5s;
@@ -98,8 +99,8 @@ nav img {
 }
 
 .hero-btn:hover{
-    border: 1px solid var(--light-blue);
-    background: var(--light-blue);
+    border: 1px solid var(--blue);
+    background: var(--blue);
     transition: 1s;
 }
 
@@ -116,7 +117,7 @@ nav .fa{
     }
     .nav-links{
         position: absolute;
-        background: var(--light-blue);
+        background: var(--blue);
         height: 100vh;
         width: 200px;
         top: 0;
@@ -134,5 +135,57 @@ nav .fa{
     }
     .nav-links ul{
         padding: 30px;
+    }
+}
+
+.classes{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+p {
+    color: var(--grey);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
+
+.row {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.class-col {
+    flex-basis: 31%;
+    background: var(--light-blue);
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+h3 {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.class-col:hover{
+    box-shadow: 0 0 20px 0 var(--grey);
+}
+
+@media(max-width: 700px){
+    .row {
+        flex-direction: column;
     }
 }
