@@ -232,3 +232,22 @@ h3 {
 .sub-header h1 {
     margin-top: 100px;
 }
+
+/*----- sign up btn -----*/
+nav .btn-outline {
+    display: inline-block;
+}
+
+.btn-outline{
+    border: 1px solid black;
+    padding: 0 1em;
+}
+
+/*----- form -----*/
+label, input[type="text"], input[type="email"], textarea{
+    font-size: 1em !important;
+}
+
+form p {
+    font-size: 1em;
+}
