@@ -1,16 +1,21 @@
-from flask import Flask
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
-    temp_form_data={
-        "firstname" : "James",
-        "surname" : "Lovelock",
-        "email" : "jlovelock@gmail.com",
-        "aboutme" : "I love playing badminton with friends <3"
-    }
-    return render_template("signup.html")
+    if request.method == "POST":
+        f = request.form
+        print(f)
+        return render_template("confirmation.html", form_data=f)
+    elif request.method == "GET"
+        temp_form_data={
+            "firstname" : "James",
+            "surname" : "Lovelock",
+            "email" : "jlovelock@gmail.com",
+            "aboutme" : "I love playing badminton with friends <3"
+        }
+        return render_template("signup.html", **temp_form_data)
 
 if __name__ == "__main__":
     app.run(debug=True)

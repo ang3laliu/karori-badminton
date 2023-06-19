@@ -12,6 +12,22 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
+<style>
+    table {
+        margin: auto;
+    }
+    td {
+        font-size: 1.5em;
+        padding: 0.25em;
+        border-bottom: 1px solid gray;
+    }
+    td: first-child {
+        text-align: right;
+        font-weight: bold;
+    }
+</style>
+
 <body>
 
     <section class="header">
@@ -33,34 +49,25 @@
         </nav>
 
     <div class="text-box">
-        <h2> Join us! Be first to know about news, special events and other updates! </h2>
+        <h2> Thank you for... </h2>
     </div>
     </section>
 
     <section>
-        <div class="container-lg p-3">
-        <form action="signup.html" method="POST">
-            <div>
-                <label for="firstname" class="form-label"> First Name </label>
-                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" value="{{firstname}}" required>
+        <div class="container-lg">
+            <h1> Your details </h1>
+            <table>
+                <tr><td>First Name</td><td>{{ form_data['firstname'] }}</td></tr>
+                <tr><td>Surname</td><td>{{ form_data['surname'] }}</td></tr>
+                <tr><td>Email</td><td>{{ form_data['email'] }}</td></tr>
+                <tr><td>About me</td><td>{{ form_data['aboutme'] }}</td></tr>
+            </table>
+
+            <div class="text-center">
+                <a href="index.html" class="btn btn-primary"> Cancel </a>
+                <a href="index.html" class="btn btn-primary"> Confirm </a>
+                <a href="signup.html, **form_data" class="btn btn-primary"> Edit </a>
             </div>
-            <div>
-                <label for="surname" class="form-label"> Surname </label>
-                <input type="text" class="form-control" id="surname" name="surname" placeholder="" value="{{surname}}" required>
-            </div>
-            <div>
-                <label for="email" class="form-label"> Email </label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="" value="{{email}}" required>
-            </div>
-            <div>
-                <label for="aboutme" class="form-label"> Tell us about yourself: </label>
-                <textarea class="form-control" id="aboutme" name="aboutme"> {{aboutme}} </textarea>
-            </div>
-            <div class="text-end">
-                <button type="reset" class="btn btn-primary"> Reset </button>
-                <button type="submit" class="btn btn-primary"> Submit </button>
-            </div>
-        </form>
         </div>
     </section>
 
