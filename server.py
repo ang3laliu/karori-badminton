@@ -2,6 +2,10 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+@app.route('/news')
+def new():
+    return render_template("news.html")
+
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
