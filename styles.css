@@ -218,6 +218,35 @@ h3 {
     }
 }
 
+/*----- back to top button -----*/
+.jump-target::before {
+    content: "";
+    display: block;
+    height: 80px;
+    margin: -70px 0 0 0;
+}
+
+#topbutton{
+    position: fixed;
+    bottom: 10px;
+    float: right;
+    left: 95%;
+    max-width: 60px;
+    max-height: 50px;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    border-color: var(--grey);
+    background-color: var(--dark-blue);
+    padding: 1px;
+    border-radius: 5px;
+}
+
+#topbutton:hover{
+    background-color: var(--light-blue);
+    color: var(--white);
+}
+
 /*----- about us sub page -----*/
 .sub-header {
     height: 50vh;

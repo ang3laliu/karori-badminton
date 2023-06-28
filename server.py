@@ -1,9 +1,33 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
+from db_functions import run_search_query_tuples
+from datetime import datetime
 
 app = Flask(__name__)
+db_path = 'badminton.sqlite'
+
+@app.template_filter()
+def news_date(sqlite_dt):
+    x = datetime.strptime(sqlite_dt, '%Y-%m-%d %H:%M:%S')
+    return x.strftime("%Y-%m-%d %H:%M:%S")
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+@app.route('/play')
+def play():
+    return render_template("play.html")
 
 @app.route('/news')
 def new():
+    # query for the page
+    sql = """select news.title, news.subtitle, news.content, member.name
+        from news
+        join member on news.member_id = member.member_id
+        order by news.newsdate desc;
+        """
+    result = run_search_query_tuples(sql, (), db_path, True)
+    print(result)
     return render_template("news.html")
 
 @app.route('/signup', methods=["GET", "POST"])
@@ -12,7 +36,7 @@ def signup():
         f = request.form
         print(f)
         return render_template("confirmation.html", form_data=f)
-    elif request.method == "GET"
+    elif request.method == "GET":
         temp_form_data={
             "firstname" : "James",
             "surname" : "Lovelock",
