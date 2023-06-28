@@ -82,7 +82,7 @@ def file_reader(f):
         for row in csv_read:
             # add each row split and stripped as a list
             collected_data.append( [x.strip() for x in row] )
-            coun t+ =1
+            count +=1
     print(count)
     # return the 2D list
     return collected_data
@@ -123,6 +123,6 @@ def execute_external_script(sql_script_path, db_path):
 
 
 if __name__ == "__main__":
-    sql_path = 'data/create_db.sql'
-    db_path = 'data/pasta_db.sqlite'
-    execute_external_script(sql_path ,db_path)
+    sql_path = 'create_db.sql'
+    db_path = 'pasta_db.sqlite'
+    execute_external_script(sql_path, db_path)
