@@ -35,19 +35,19 @@ values('Suzie', 'suzannah@outlook.com', 'temp', 1);
 
 insert into news(title, subtitle, content, newsdate, member_id)
 values('Pasta Happy Hour!',
-        'Every Thursday from 5:00 to 6:30, 15% off any of our Combos',
-        'That''s right, it''s real!' || char(10) ||,
-        'Drop in early with your work mates and have a great feed at a discount price.',
-        '2023-03-04 20:30:00',
-        (select member_id from member where name="Mike")
+       'Every Thursday from 5:00 to 6:30, 15% off any of our Combos',
+       'That''s right, it''s real! ' || char(10) ||
+       'Drop in early with your work mates and have a great feed at a discount price.',
+       '2023-03-04 20:30:00',
+       (select member_id from member where name='Mike' )
 );
 
 insert into news(title, subtitle, content, newsdate, member_id)
 values('Tasting Night!',
-        'Come in and try some new dishes that might end up on our menu.',
-        'Jack, our chef, has been working with his team to design some new dishes.' || char(10) ||,
-        'He has recently returned from Italy and visited some of Italy''s best pasta bars.' || char(10) ||,
-        'If you would like to be part of our customer tasting panel, please leave a comment below!',
-        '2023-03-12 17:45:00',
-        (select member_id from member where name="Vanessa")
+       'Come in and try some new dishes that might end up on our menu.',
+       'Jack, our chef, has been working with his team to design some new dishes.' || char(10) ||
+       'He has recently returned from Italy and visited many of Italy''s best pasta bars.' || char(10) ||
+       'If you would like to be part of our customer tasting panel please put a comment below and we''ll get back to you.',
+       '2023-03-12 17:45:00',
+       (select member_id from member where name='Vanessa' )
 );
