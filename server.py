@@ -31,13 +31,26 @@ def news():
     print(result)
     return render_template("news.html")
 
-@app.route('/news_cud')
+@app.route('/news_cud', methods=['GET', 'POST'])
 def new_cud():
-    # arrive that the page in either get or post method
+    # collect data from the web address
     data = request.args
-    print(data)
-    print(data['id'])
-    print(data['task'])
+    required_keys = ['id', 'task']
+    for k in required_keys:
+        if k not in data.keys():
+            message = "Do not know what to do with create read update on news (key not present)"
+            return render_template('error.html', message=message)
+    # have an id and a task key
+    if request.method == "GET":
+        if data['task'] == 'delete':
+            return "<h1> I want to delete <\h1>"
+        elif data['task'] == 'update':
+            return "<h1> I want to update <\h1>"
+        elif data['task'] == 'add':
+            return "<h1> I want to add <\h1>"
+        else:
+            message = "Unrecognised task coming from the news page"
+            return render_template('error.html', message=message)
     return render_template("news_cud.html")
 
 @app.route('/signup', methods=["GET", "POST"])
