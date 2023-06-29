@@ -1,46 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Karori Badminton </title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
+{% extends "layout.html" %}
 
-    <section class="sub-header">
-        <nav>
-            <a href="index.html"><img src="logo.png" alt=""></a>
-            <div class="nav-links" id="navLinks">
-                <i onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="play.html">PLAY</a></li>
-                    <li><a href="">LEARN</a></li>
-                    <li><a href="news.html">NEWS</a></li>
-                    <li><a href="">ABOUT US</a></li>
-                </ul>
-            </div>
-            <i onclick="showMenu()"></i>
-        </nav>
-        <h1> News </h1>
-    </section>
+{% block content %}
 
 
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        function showMenu(){
-            navLinks.style.right = "0";
-        }
-        function hideMenu(){
-            navLinks.style.right = "-200px";
-        }
-    </script>
 
-</body>
-</html>
+<div class="container-lg py-sm-5 py-1">
+     <h1> News</h1>
+    <div class="news p-4 my-4 text-end">
+        <a class="btn btn-primary" href="{{ url_for('news_cud', id=0, task='add') }}">Add News</a>
+    </div>
+
+
+    {% for row in news %}
+    <div class="news p-4 my-4">
+    <h2> {{ row['title'] }}</h2>
+        <div class="subtitle"> {{ row['subtitle'] }}</div>
+        <p class="news-text"> {{ row['content'] | replace("\n", "<br>") | safe}} </p>
+        <div class="news-meta">Posted by {{ row['name'] }} on {{ row['newsdate'] | news_date }}</div>
+        <div class="news-meta">
+            <a class="btn btn-primary" href="{{ url_for('news_cud', id=row['news_id'], task='update') }}">Update</a>
+            <a class="btn btn-primary" href="{{ url_for('news_cud', id=row['news_id'], task='delete') }}">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

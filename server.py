@@ -7,12 +7,13 @@ db_path = 'badminton.sqlite'
 
 @app.template_filter()
 def news_date(sqlite_dt):
+    # create a date object
     x = datetime.strptime(sqlite_dt, '%Y-%m-%d %H:%M:%S')
-    return x.strftime("%Y-%m-%d %H:%M:%S")
+    return x.strftime("%a %d %b %Y %I:%M %p")
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("layout.html")
 
 @app.route('/play')
 def play():
