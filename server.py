@@ -20,7 +20,7 @@ def play():
     return render_template("play.html")
 
 @app.route('/news')
-def new():
+def news():
     # query for the page
     sql = """select news.title, news.subtitle, news.content, member.name
         from news
@@ -30,6 +30,15 @@ def new():
     result = run_search_query_tuples(sql, (), db_path, True)
     print(result)
     return render_template("news.html")
+
+@app.route('/news_cud')
+def new_cud():
+    # arrive that the page in either get or post method
+    data = request.args
+    print(data)
+    print(data['id'])
+    print(data['task'])
+    return render_template("news_cud.html")
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -45,6 +54,7 @@ def signup():
             "aboutme" : "I love playing badminton with friends <3"
         }
         return render_template("signup.html", **temp_form_data)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
