@@ -123,6 +123,6 @@ def execute_external_script(sql_script_path, db_path):
 
 
 if __name__ == "__main__":
-    sql_path = 'create_db.sql'
-    db_path = 'badminton.sqlite'
+    sql_path = 'data/create_db.sql'
+    db_path = 'data/badminton.sqlite'
     execute_external_script(sql_path, db_path)

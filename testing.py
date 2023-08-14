@@ -12,6 +12,9 @@ def get_news(p):
             print(k)
             print(row[k])
 
+def get_all():
+    sql="select * from news"
+
 
 if __name__ == "__main__":
     db_path = 'badminton.sqlite'
