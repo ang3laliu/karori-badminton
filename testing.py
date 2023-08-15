@@ -17,5 +17,5 @@ def get_all():
 
 
 if __name__ == "__main__":
-    db_path = 'badminton.sqlite'
+    db_path = 'data/badminton.sqlite'
     get_news(db_path)

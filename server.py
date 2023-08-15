@@ -3,7 +3,7 @@ from db_functions import run_search_query_tuples, run_commit_query
 from datetime import datetime
 
 app = Flask(__name__)
-db_path = 'data/badminton_db.sqlite'
+db_path = 'data/badminton.sqlite'
 
 @app.template_filter()
 def news_date(sqlite_dt):
@@ -37,7 +37,6 @@ def news():
        """
     result = run_search_query_tuples(sql, (), db_path, True)
     print(result)
-    result={}
     return render_template("news.html", news=result)
 
 @app.route('/news_cud', methods=['GET', 'POST'])

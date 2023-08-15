@@ -53,7 +53,7 @@ values('Successful July for KB Juniors',
         'entered a team in U15, U17 and two teams in U19. Our U17s were undefeated in Division 2 of the NZ Junior ' ||
         'Teams Championships and produly took home gold!',
         '2023-07-19 16:31:56',
-        (select member_id from member where name='Babette' )
+        (select member_id from member where name='Simon' )
 );
 
 insert into news(title, subtitle, content, newsdate, member_id)
