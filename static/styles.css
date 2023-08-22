@@ -18,7 +18,7 @@
 .header {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7)),(rgba(4,9,30,0.7)),url(homeBanner1.jpg);
+    background-image: url(images/temp_banner.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -56,7 +56,7 @@ nav img {
 
 .nav-links ul li::after{
     content: '';
-    width: 0%;
+    width: 0;
     height: 2px;
     background: var(--blue);
     display: block;
@@ -70,12 +70,12 @@ nav img {
 
 /*----- home page header -----*/
 .text-box{
-    width: 90%;
-    color: var(--white);
-    position: absolute;
-    top: 50%;
-    bottom: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    color: var(--blue);
+    border: 2px solid var(--blue);
+        background-image: url(images/temp_banner.jpg);
+    background-position: center;
+    background-size: cover;
     text-align: center;
 }
 
@@ -104,7 +104,7 @@ nav img {
     color: var(--white);
     border: 1px solid var(--blue);
     background: var(--blue);
-    transition: 1s;
+    transition: 0.5s;
 }
 
 nav .fa{
@@ -146,7 +146,7 @@ nav .fa{
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 60px;
 }
 
 h1 {
@@ -194,16 +194,15 @@ h3 {
     }
 }
 
-/*----- ready to play section -----*/
+/*----- ready to play footer -----*/
 .rtp {
-    margin: 100px auto;
-    width: 80%
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), url(homeBanner2.jpg));
+    margin: auto;
+    width: 100%;
+    background-image: url(images/temp_banner.jpg);
     background-position: center;
     background-size: cover;
-    border-radius: 10px;
     text-align: center;
-    padding: 100px 0;
+    padding: 10px 0;
 }
 
 .rtp h1 {
@@ -251,7 +250,7 @@ h3 {
 .sub-header {
     height: 50vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7)),(rgba(4,9,30,0.7)),url(aboutUsBanner.jpg);
+    background-image:  url(images/temp_banner.jpg);
     background-position: center;
     background-size: cover;
     text-align: center;

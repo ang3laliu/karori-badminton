@@ -30,7 +30,7 @@ values('Babette', 'babette.mccalman@yahoo.com', 'temp', 0);
 insert into member(name, email, password, authorisation)
 values('Simon', 'simon.li@hotmail.com', 'temp', 1);
 insert into member(name, email, password, authorisation)
-values('John', 'john.smith@outlook.com', 'temp', 1);
+values('John', 'john.turner@outlook.com', 'temp', 1);
 
 
 insert into news(title, subtitle, content, newsdate, member_id)
@@ -51,7 +51,7 @@ values('Successful July for KB Juniors',
         'New Zealand running. This year it was the 40th year anniversary for the New Zealand Junior Team '||
         'Championships. Across New Zealand 74 teams competed in Palmerston North''s Fly Arena. Wellington North '||
         'entered a team in U15, U17 and two teams in U19. Our U17s were undefeated in Division 2 of the NZ Junior ' ||
-        'Teams Championships and produly took home gold!',
+        'Teams Championships and proudly took home gold!',
         '2023-07-19 16:31:56',
         (select member_id from member where name='Simon' )
 );

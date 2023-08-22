@@ -17,15 +17,15 @@ def index():
 
 @app.route('/play')
 def play():
-    return "<h1> Play page </h1>"
+    return render_template("play.html")
 
 @app.route('/learn')
 def learn():
-    return "<h1> Learn page </h1>"
+    return render_template("learn.html")
 
 @app.route('/aboutus')
 def aboutus():
-    return "<h1> About us page </h1>"
+    return render_template("aboutus.html")
 
 @app.route('/news')
 def news():
