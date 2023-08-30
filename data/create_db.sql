@@ -24,13 +24,13 @@ create table news(
 
 
 insert into member(name, email, password, authorisation)
-values('Julie', 'julie.bowen@gmail.com', 'temp', 0);
+values('Julie', 'julie.bowen@gmail.com', 'temp', 1);
 insert into member(name, email, password, authorisation)
 values('Babette', 'babette.mccalman@yahoo.com', 'temp', 0);
 insert into member(name, email, password, authorisation)
 values('Simon', 'simon.li@hotmail.com', 'temp', 1);
 insert into member(name, email, password, authorisation)
-values('John', 'john.turner@outlook.com', 'temp', 1);
+values('John', 'john.turner@outlook.com', 'temp', 0);
 
 
 insert into news(title, subtitle, content, newsdate, member_id)
@@ -63,8 +63,8 @@ values('The Future of Court Hire',
         'play more badminton, more often. The Stadium Pass intends to provide a cost-effective way for players to '||
         'access courts, play amongst their friends, and practice badminton more often. The Stadium Pass allows pass '||
         'holders to have unlimited* access to our badminton courts for a month at a set price, without additional ' ||
-        'court hire cost. This new court hire model is similar to squash and tennis, as well as comparable to a gym ' ||
-        'membership. We will begin trialing this product later this year in October!',
+        'court hire cost. This new court hire model is similar to squash and tennis, and comparable to going a gym ' ||
+        'membership. We will begin trialing this product later this year in November!',
         '2023-07-19 16:31:56',
         (select member_id from member where name='Babette' )
 );

@@ -110,6 +110,27 @@ def news_cud():
             message = "Unrecognised task coming from news form submission"
             return render_template('error.html', message=message)
 
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    error = "Your credentials are unrecognised"
+    if request.method == "GET":
+        return render_template("login.html", email="julie.bowen@gmail.com", password="temp")
+    elif request.method == "POST":
+        f = request.form
+        sql = """ select name, password, authorisation from member where email = ? """
+        values_tuple = (f['email'],)
+        result = run_search_query_tuples(sql, values_tuple, db_path, True)
+        if result:
+            result = result[0]
+            if result['password'] == f['password']:
+                return redirect(url_for('index'))
+            else:
+                return render_template("login.html", email="julie.bowen@gmail.com", password="temp", error=error)
+        else:
+            return render_template("login.html", email="julie.bowen@gmail.com", password="temp", error=error)
+
+
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -130,9 +151,6 @@ def signup():
             temp_form_data = carried_data
         return render_template("signup.html", **temp_form_data)
 
-@app.route('/login')
-def login():
-    return "<h1>Login page </h1>"
 
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
