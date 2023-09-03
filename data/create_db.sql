@@ -24,13 +24,13 @@ create table news(
 
 
 insert into member(name, email, password, authorisation)
-values('Julie', 'julie.bowen@gmail.com', 'temp', 1);
+values('Julie Bowen', 'julie.bowen@gmail.com', 'temp', 1);
 insert into member(name, email, password, authorisation)
-values('Babette', 'babette.mccalman@yahoo.com', 'temp', 0);
+values('Babette McCalman', 'babette.mccalman@yahoo.com', 'temp', 0);
 insert into member(name, email, password, authorisation)
-values('Simon', 'simon.li@hotmail.com', 'temp', 1);
+values('Simon Li', 'simon.li@hotmail.com', 'temp', 1);
 insert into member(name, email, password, authorisation)
-values('John', 'john.turner@outlook.com', 'temp', 0);
+values('John Turner', 'john.turner@outlook.com', 'temp', 0);
 
 
 insert into news(title, subtitle, content, newsdate, member_id)

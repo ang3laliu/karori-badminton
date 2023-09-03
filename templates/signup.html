@@ -8,7 +8,7 @@
 </div>
 
 <div class="container-lg p-3">
-<form action="signup.html" method="POST">
+<form action="{{ url_for('signup') }}" method="POST">
     <div>
         <label for="firstname" class="form-label"> First Name </label>
         <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" value="{{firstname}}" required>
@@ -22,8 +22,8 @@
         <input type="email" class="form-control" id="email" name="email" placeholder="" value="{{email}}" required>
     </div>
     <div>
-        <label for="aboutme" class="form-label"> Tell us about yourself: </label>
-        <textarea class="form-control" id="aboutme" name="aboutme"> {{aboutme}} </textarea>
+        <label for="password" class="form-label"> Password </label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="" value="{{password}}" required>
     </div>
     <div class="text-end">
         <button type="reset" class="btn btn-primary"> Reset </button>

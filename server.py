@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from db_functions import run_search_query_tuples, run_commit_query
 from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = "abcdefghijklmnop"
 db_path = 'data/badminton.sqlite'
+
 
 @app.template_filter()
 def news_date(sqlite_dt):
@@ -11,21 +13,26 @@ def news_date(sqlite_dt):
     x = datetime.strptime(sqlite_dt, '%Y-%m-%d %H:%M:%S')
     return x.strftime("%a %d %b %Y %H:%M %p")
 
+
 @app.route('/')
 def index():
     return render_template("index.html")
+
 
 @app.route('/play')
 def play():
     return render_template("play.html")
 
+
 @app.route('/learn')
 def learn():
     return render_template("learn.html")
 
+
 @app.route('/aboutus')
 def aboutus():
     return render_template("aboutus.html")
+
 
 @app.route('/news')
 def news():
@@ -38,6 +45,7 @@ def news():
     result = run_search_query_tuples(sql, (), db_path, True)
     print(result)
     return render_template("news.html", news=result)
+
 
 @app.route('/news_cud', methods=['GET', 'POST'])
 def news_cud():
@@ -124,29 +132,44 @@ def login():
         if result:
             result = result[0]
             if result['password'] == f['password']:
+                # start a session
+                session['name'] = result['name']
+                session['authorisation'] = result['authorisation']
+                print(session)
+
                 return redirect(url_for('index'))
             else:
                 return render_template("login.html", email="julie.bowen@gmail.com", password="temp", error=error)
         else:
             return render_template("login.html", email="julie.bowen@gmail.com", password="temp", error=error)
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
+
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
         f = request.form
-        return render_template("confirm.html", form_data=f)
+        print(f)
+        sql = """insert into member (name, email, password, authorisation)
+        values(?,?,?, 0)"""
+        name = f['firstname'] + " " + f['surname']
+        values_tuple=(name, f['email'], f['password'])
+        result = run_commit_query(sql, values_tuple, db_path)
+        return redirect(url_for('index'))
     elif request.method == "GET":
         carried_data = request.args
-        print(carried_data)
+        #print(carried_data)
         if len(carried_data) == 0:
             temp_form_data = {
                 "firstname": "James",
                 "surname": "Lovelock",
                 "email": "jlovelock@gmail.com",
-                "aboutme": "I <3 playing badminton w/ friends :)"
+                "password": "jameslovelock"
             }
-            # temp_form_data = {}
         else:
             temp_form_data = carried_data
         return render_template("signup.html", **temp_form_data)
