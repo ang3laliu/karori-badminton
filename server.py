@@ -100,8 +100,9 @@ def news_cud():
             # add the new news entry to the database
             # member is fixed for now
             sql = """insert into news(title,subtitle,content, newsdate, member_id) 
-                        values(?,?,?, datetime('now', 'localtime'),2)"""
-            values_tuple = (f['title'], f['subtitle'], f['content'])
+                        values(?,?,?, datetime('now', 'localtime'),?)"""
+            #
+            values_tuple = (f['title'], f['subtitle'], f['content'], session['member_id'])
             result = run_commit_query(sql, values_tuple, db_path)
             # once added redirect to news page to see the newly added news item
             return redirect(url_for('news'))
@@ -123,10 +124,10 @@ def news_cud():
 def login():
     error = "Your credentials are unrecognised"
     if request.method == "GET":
-        return render_template("login.html", email="julie.bowen@gmail.com", password="temp")
+        return render_template("login.html")
     elif request.method == "POST":
         f = request.form
-        sql = """ select name, password, authorisation from member where email = ? """
+        sql = """ select member_id, name, password, authorisation from member where email = ? """
         values_tuple = (f['email'],)
         result = run_search_query_tuples(sql, values_tuple, db_path, True)
         if result:
@@ -135,13 +136,13 @@ def login():
                 # start a session
                 session['name'] = result['name']
                 session['authorisation'] = result['authorisation']
+                session['member_id'] = result['member_id']
                 print(session)
-
                 return redirect(url_for('index'))
             else:
-                return render_template("login.html", email="julie.bowen@gmail.com", password="temp", error=error)
+                return render_template("login.html", error=error)
         else:
-            return render_template("login.html", email="julie.bowen@gmail.com", password="temp", error=error)
+            return render_template("login.html",  error=error)
 
 @app.route('/logout')
 def logout():
@@ -155,7 +156,7 @@ def signup():
         f = request.form
         print(f)
         sql = """insert into member (name, email, password, authorisation)
-        values(?,?,?, 0)"""
+        values(?,?,?, 1)"""
         name = f['firstname'] + " " + f['surname']
         values_tuple=(name, f['email'], f['password'])
         result = run_commit_query(sql, values_tuple, db_path)
@@ -170,6 +171,7 @@ def signup():
                 "email": "jlovelock@gmail.com",
                 "password": "jameslovelock"
             }
+            temp_form_data = {}
         else:
             temp_form_data = carried_data
         return render_template("signup.html", **temp_form_data)
