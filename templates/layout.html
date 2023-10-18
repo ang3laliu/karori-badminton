@@ -10,22 +10,19 @@
         <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div class="container-fluid">
 
+<section class="header">
     <nav class="navbar navbar-expand-lg px-3 py-2">
-
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <a class="nav-link" href="{{ url_for('index') }}"><img src="static/images/logo.png" alt=""></a>
+        <div class="nav-links collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('index') }}"><img src="static/images/logo.png" alt=""></a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('play') }}"> PLAY </a>
                 </li>
@@ -39,23 +36,21 @@
                     <a class="nav-link" href="{{ url_for('aboutus') }}"> ABOUT US </a>
                 </li>
             </ul>
-
-            <div class="ms-auto">
+        <div class="ms-auto">
                 {% if session %}
                 <a class="nav-link btn btn-outline" href="{{ url_for('logout') }}">Log out</a>
                 {% else %}
                 <a class="nav-link btn btn-outline" href="{{ url_for('signup') }}">Sign up</a>
                 <a class="nav-link btn btn-outline" href="{{ url_for('login') }}">Log in</a>
                 {% endif %}
-            </div>
+        </div>
         </div>
     </nav>
+</section>
 
-        {% if session %}
+{% if session %}
         <div class="session"> {{ session['name'] }} is logged in and their authorisation is {{ session['authorisation'] }}</div>
-        {% endif %}
-
-    </div>
+{% endif %}
 
 
 {% block content %}
@@ -63,9 +58,30 @@
 {% endblock %}
 
 
-    <footer class="rtp container-fluid footer-content">
-        <h1> Ready to Play? </h1>
-    </footer>
+    <div class="footer">
+        <div class="col-1">
+            <h3>USEFUL LINKS</h3>
+            <a href="">Play</a>
+            <a href="">Learn</a>
+            <a href="">News</a>
+            <a href="">About Us</a>
+        </div>
+        <div class="col-2">
+            <h3>READY TO PLAY?</h3>
+            <a class="footer-btn" href="{{ url_for('signup') }}">Sign up</a>
+            <div class="social-icons">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
+        </div>
+        <div class="col-3">
+            <h3>CONTACT</h3>
+            <p> 04 476 4968 </p>
+            <p> office@kbc.nz</p>
+            <p>101 Karori Road, Karori<br>Wellington, NZ</p>
+        </div>
+    </div>
 
 </body>
 </html>
