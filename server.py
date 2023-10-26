@@ -29,11 +29,6 @@ def learn():
     return render_template("learn.html")
 
 
-@app.route('/aboutus')
-def aboutus():
-    return render_template("aboutus.html")
-
-
 @app.route('/news')
 def news():
     # query for the page
