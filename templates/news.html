@@ -2,8 +2,12 @@
 
 {% block content %}
 
+    <div class="subpage-container">
+        <img class="img-fluid" src="static/images/subpage-header.jpg">
+        <div class="centered"><h1>NEWS</h1></div>
+    </div>
+
 <div class="container-lg py-sm-5 py-1">
-    <h1> News </h1>
 {% if session and session['authorisation'] == 0 %}
 <div class="news p-4 my-4 text-end">
     <a class="btn btn-primary" href="{{ url_for('news_cud', id=0, task='add') }}">Add News</a>
