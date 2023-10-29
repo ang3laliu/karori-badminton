@@ -16,15 +16,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.header {
-    min-height: 100vh;
-    width: 100%;
-    background-image: url(static/images/home_banner.jpg);
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
-
 
 /*----- nav bar -----*/
 nav{
@@ -175,29 +166,6 @@ h3 {
     }
 }
 
-/*----- ready to play footer -----*/
-.rtp {
-    margin: auto;
-    width: 100%;
-    background-image: url(images/footer.jpg);
-    background-position: center;
-    background-size: cover;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.rtp h1 {
-    color: var(--black);
-    margin-bottom: 40px;
-    padding: 0;
-}
-
-@media(max-width: 700px){
-    .rtp h1 {
-        font-size: 24px;
-    }
-}
-
 
 /*----- sign up btn -----*/
 nav .btn-outline {
@@ -229,6 +197,7 @@ form p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: var(--white);
 }
 
 
@@ -259,9 +228,7 @@ form p {
     color: var(--white);
     margin-bottom: 10px;
 }
-.footer-btn {
-    /*----- style footer sign up button -----*/
-}
+
 
 /*----- social media icons -----*/
 .social-icons {

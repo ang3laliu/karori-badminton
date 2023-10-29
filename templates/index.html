@@ -3,13 +3,13 @@
 {% block content %}
 
 
-    <section class="header">
-        <div class="text-box">
-            <h1> Karori Badminton Club </h1>
+    <div class="subpage-container">
+        <img class="img-fluid" src="static/images/home-banner.jpg">
+        <div class="centered"><h1>Karori Badminton Club</h1>
             <p> Aspiring to support, strengthen and promote badminton in our community </p>
-            <a href="learn.html" class="hero-btn"> Learn More Here </a>
-        </div>
-    </section>
+            <a href="{{ url_for('play') }}" class="hero-btn"> Learn More Here </a></div>
+    </div>
+
 
     <section class="classes">
         <h1> Classes We Offer </h1>
